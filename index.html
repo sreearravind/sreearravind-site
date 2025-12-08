@@ -160,61 +160,184 @@
     </div>
   </section>
 
-  <!-- PUBLICATIONS -->
-  <section id="publications" aria-label="Publications & Patents">
-    <h2>Publications & Patents</h2>
+  <!-- PUBLICATIONS & PATENTS -->
+<section id="publications" aria-label="Publications & Patents">
+  <h2>Publication & Patent Information</h2>
 
-    <h3>Featured</h3>
+  <!-- SCI-E Indexed Journals -->
+  <h3>SCI-E Indexed Journals</h3>
+  <ul class="pub">
+    <li>
+      Sreearravind, M., Ravisankar, B., & Ramesh Kumar, S. (2024).
+      <em>Low Cycle Fatigue Behaviour of Aluminium 6063 Alloy Processed by Equal Channel Angular Pressing (ECAP) at 90° and 120° Channel Angles.</em>
+      <strong>Materials Today Communications.</strong>
+      <a href="https://doi.org/10.1016/j.mtcomm.2024.111401" target="_blank" rel="noopener">DOI</a>
+    </li>
+
+    <li>
+      Sreearravind, M., & Subramanian, R. K. (2023).
+      <em>Experimental investigation on the low cycle fatigue performance and fractographic analysis of deep cryogenic treated 6063 aluminium alloy.</em>
+      <strong>Structures, 58, 105588.</strong>
+      <a href="https://doi.org/10.1016/j.istruc.2023.105588" target="_blank" rel="noopener">DOI</a>
+    </li>
+
+    <li>
+      Kumar, S. R., & Sreearravind, M. (2022).
+      <em>Influence of Si Content on Fatigue Life for Heat Treated Cast Al-Si-Mg Alloy Using Different Quenching Technique.</em>
+      <strong>Silicon, 14(3), 977–987.</strong>
+      <a href="https://doi.org/10.1007/s12633-020-00874-8" target="_blank" rel="noopener">DOI</a>
+    </li>
+
+    <li>
+      Ramesh Kumar, S., & Sreearravind, M. (2022).
+      <em>Assessment of Magnetically Impelled Arc Butt Welded Dissimilar Boiler Graded Steel Tubes SAE213 T11 and SAE213 T91.</em>
+      <strong>Journal of Materials Engineering and Performance, 31(3), 1846–1856.</strong>
+      <a href="https://doi.org/10.1007/s11665-021-06343-6" target="_blank" rel="noopener">DOI</a>
+    </li>
+  </ul>
+
+  <!-- Patent -->
+  <h3>Patent</h3>
+  <ul class="pub">
+    <li>
+      <strong>Intellectual Property India, Application No. 202341047769</strong> (Filed 15/07/2023).  
+      <em>“An Apparatus for Artefact Knitting.”</em>  
+      Inventors: Ramesh Kumar S., Santhosh Kumar S., & Sreearravind M.  
+      A plate welding fixture assembly with magnetic alignment for MIAB welding applications.
+    </li>
+  </ul>
+
+  <!-- Accordion Style Sections -->
+  <style>
+    .accordion-btn {
+      cursor: pointer;
+      padding: 10px 14px;
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      margin-top: 14px;
+      font-weight: 600;
+    }
+    .accordion-content {
+      display: none;
+      margin-top: 10px;
+      border-left: 3px solid var(--line);
+      padding-left: 14px;
+    }
+  </style>
+
+  <script>
+    function toggleAccordion(id, btnId) {
+      const section = document.getElementById(id);
+      const btn = document.getElementById(btnId);
+      const isVisible = section.style.display === "block";
+      section.style.display = isVisible ? "none" : "block";
+      btn.innerHTML = isVisible ? "▼ " + btn.dataset.title : "▲ " + btn.dataset.title;
+    }
+  </script>
+
+  <!-- SCOPUS Accordion -->
+  <button class="accordion-btn" id="btn-scopus"
+          data-title="Scopus Indexed Journals"
+          onclick="toggleAccordion('scopus-content','btn-scopus')">
+    ▼ Scopus Indexed Journals
+  </button>
+
+  <div id="scopus-content" class="accordion-content">
     <ul class="pub">
       <li>
-        <strong>Low Cycle Fatigue Behaviour of Aluminium 6063 Alloy Processed by ECAP at 90° and 120°</strong>,
-        <em>Materials Today Communications</em> (2024).
-        <a href="https://doi.org/10.1016/j.mtcomm.2024.111401" target="_blank" rel="noopener">doi:10.1016/j.mtcomm.2024.111401</a>
+        Ramesh Kumar, S., Sreearravind, M., et al. (2020).
+        <em>Low Cycle Fatigue behavior of heat treated EN-47 Spring Steel.</em>
+        Materials Today: Proceedings, 22, 2191–2198.
+        <a href="https://doi.org/10.1016/j.matpr.2020.03.299" target="_blank">DOI</a>
       </li>
+
       <li>
-        <strong>Experimental investigation on LCF performance & fractography of deep cryogenic treated 6063 aluminium alloy</strong>,
-        <em>Structures</em>, 58, 105588 (2023).
-        <a href="https://doi.org/10.1016/j.istruc.2023.105588" target="_blank" rel="noopener">doi:10.1016/j.istruc.2023.105588</a>
+        Sreearravind, M., Ramesh Kumar, S., et al. (2020).
+        <em>Low cycle fatigue behavior of aluminium 6063 alloy under the cyclic frequency of 0.2 Hz.</em>
+        Materials Today: Proceedings, 27, 2376–2380.
+        <a href="https://doi.org/10.1016/j.matpr.2019.09.133" target="_blank">DOI</a>
+      </li>
+
+      <li>
+        Kumar, S. R., Kumaran, S. S., Ramesh, G., Sreearravind, M., & Venkateswarlu, D. (2019).
+        <em>Effect of Soaking Time on Evolution of Microstructure and Hardness during Annealing of EN-47 Spring Steel.</em>
+        Materials Science Forum, 969, 427–432.
+        <a href="https://doi.org/10.4028/www.scientific.net/MSF.969.427" target="_blank">DOI</a>
+      </li>
+
+      <li>
+        Kumaran, S. S., Sreearravind, M., et al. (2019).
+        <em>Experimental Analysis of SA213 Tube to SA387 Tube Plate Welding by Close Fit Technique.</em>
+        Materials Science Forum, 969, 570–575.
+        <a href="https://doi.org/10.4028/www.scientific.net/MSF.969.570" target="_blank">DOI</a>
+      </li>
+
+      <li>
+        Sreearravind, M., Kumar, S. R., et al. (2019).
+        <em>Effect of Mechanical Properties and Corrosion Behaviour of Martensitic Stainless Steel 410 Butt Welded by Plasma Arc Welding.</em>
+        Materials Science Forum, 969, 601–606.
+        <a href="https://doi.org/10.4028/www.scientific.net/MSF.969.601" target="_blank">DOI</a>
+      </li>
+
+      <li>
+        Kumar, S. R., Kumaran, S. S., Sreearravind, M., et al. (2019).
+        <em>Austenitic Stainless Steel 1.6 mm Butt Welded by Plasma Arc Welding: Microstructure and Mechanical Properties.</em>
+        Materials Science Forum, 969, 619–624.
+        <a href="https://doi.org/10.4028/www.scientific.net/MSF.969.619" target="_blank">DOI</a>
+      </li>
+
+      <li>
+        Kumar, S. R., et al. (2019).
+        <em>X-Ray Diffraction and Microstructure Analysis of EN47 Spring Steel at Various Soaking Periods.</em>
+        Materials Science Forum, 969, 104–109.
+        <a href="https://doi.org/10.4028/www.scientific.net/MSF.969.104" target="_blank">DOI</a>
+      </li>
+
+      <li>
+        Sreearravind, M., Peddavarapu, S., & Raghuraman, S. (2018).
+        <em>Microstructural investigation of aluminum-graphene nanoplatelet composites.</em>
+        AIP Conference Proceedings, 1952(1), 020103.
+        <a href="https://doi.org/10.1063/1.5032065" target="_blank">DOI</a>
       </li>
     </ul>
+  </div>
 
-    <h3>All peer-reviewed (SCI-E / journals)</h3>
+  <!-- BOOK CHAPTERS Accordion -->
+  <button class="accordion-btn" id="btn-books"
+          data-title="Book Chapters"
+          onclick="toggleAccordion('books-content','btn-books')">
+    ▼ Book Chapters
+  </button>
+
+  <div id="books-content" class="accordion-content">
     <ul class="pub">
       <li>
-        Sreearravind, M., Ravisankar, B., & Ramesh Kumar, S. (2024).
-        <em>Low Cycle Fatigue Behaviour of Aluminium 6063 Alloy Processed by Equal Channel Angular Pressing (ECAP) at 90° and 120° Channel Angles</em>.
-        <strong>Materials Today Communications</strong>.
-        <a href="https://doi.org/10.1016/j.mtcomm.2024.111401" target="_blank" rel="noopener">DOI</a>
+        Sreearravind, M., Ramesh Kumar, S., & Ahilan, C. (2022).
+        <em>Fatigue Characterization and Fractographic Analysis of Aluminium 6063 Alloy.</em>
+        In Handbook of Research on Advancements in Lightweight Materials. IGI Global.
       </li>
-      <li>
-        Sreearravind, M., & Subramanian, R. K. (2023).
-        <em>Experimental investigation on the low cycle fatigue performance and fractographic analysis of deep cryogenic treated 6063 aluminium alloy</em>.
-        <strong>Structures</strong>, 58, 105588.
-        <a href="https://doi.org/10.1016/j.istruc.2023.105588" target="_blank" rel="noopener">DOI</a>
-      </li>
-      <li>
-        Kumar, S. R., & Sreearravind, M. (2022).
-        <em>Influence of Si Content on Fatigue Life for Heat Treated Cast Al-Si-Mg Alloy Using Different Quenching Technique</em>.
-        <strong>Silicon</strong>, 14(3), 977–987.
-        <a href="https://doi.org/10.1007/s12633-020-00874-8" target="_blank" rel="noopener">DOI</a>
-      </li>
-      <li>
-        Ramesh Kumar, S., & Sreearravind, M. (2022).
-        <em>Assessment of Magnetically Impelled Arc Butt Welded Dissimilar Boiler Graded Steel Tubes SAE213 T11 and SAE213 T91</em>.
-        <strong>Journal of Materials Engineering and Performance</strong>, 31(3), 1846–1856.
-        <a href="https://doi.org/10.1007/s11665-021-06343-6" target="_blank" rel="noopener">DOI</a>
-      </li>
-    </ul>
 
-    <h3>Patent</h3>
-    <ul class="pub">
       <li>
-        Intellectual Property India, Application No. 202341047769 (15/07/2023).
-        <em>“An Apparatus for Artefact Knitting”</em> — plate welding fixture assembly with magnets for improved alignment & stability in MIAB welding.
-        (Inventors: Ramesh Kumar S, Santhosh Kumar S, Sreearravind M.)
+        Kumar Subramanian, R., Kumar Srirangan, A., & Sreearravind, M. (2020).
+        <em>Severely Plastic Deformed Magnesium Based Alloys.</em>
+        In Magnesium - The Wonder Element for Engineering/Biomedical Applications. IntechOpen.
+        <a href="https://doi.org/10.5772/intechopen.88778" target="_blank">DOI</a>
+      </li>
+
+      <li>
+        Ramesh Kumar, S., Ramesh, G., Sreearravind, M., Senthil, T. (2024).
+        <em>Reutilization of Waste Polymeric Materials for 3D Printing Applications.</em>
+        In From Waste to Wealth. Springer, Singapore.
+        <a href="https://doi.org/10.1007/978-981-99-7552-5_54" target="_blank">DOI</a>
       </li>
     </ul>
-  </section>
+  </div>
+
+</section>
+
 
   <!-- WRITINGS -->
   <section id="writings" aria-label="Science Writing">
@@ -327,5 +450,6 @@
 </body>
 
 </html>
+
 
 
