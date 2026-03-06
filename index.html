@@ -20,55 +20,72 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --maxw: 1040px;
-      --bg: #ffffff;
-      --fg: #1f2328;
-      --muted: #5c6b7a;
-      --line: #e7ecf2;
-      --accent: #0b5fff;
-      --soft: #f5f7fb;
-      --chip: #eef3ff;
+      --maxw: 1120px;
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --fg: #132236;
+      --muted: #5f7186;
+      --line: #d6deea;
+      --accent: #1d4ed8;
+      --accent-soft: #eaf0ff;
+      --soft: #eef3f9;
+      --chip: #f2f6ff;
+      --shadow: 0 10px 25px rgba(17, 38, 82, 0.08);
+      --shadow-soft: 0 6px 16px rgba(17, 38, 82, 0.06);
     }
     @media (prefers-color-scheme: dark){
       :root{
-        --bg:#0f1115; --fg:#e6e9ef; --muted:#a6b0c0; --line:#262a33; --soft:#141821; --chip:#17213a;
+        --bg:#0d1118; --surface:#121923; --fg:#e5ecf6; --muted:#a5b5c8; --line:#273243; --soft:#151f2d; --chip:#1a273b; --accent:#8eb1ff; --accent-soft:#1f2f4a;
+        --shadow: none;
+        --shadow-soft: none;
       }
     }
     *{box-sizing:border-box}
     html,body{margin:0}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.65}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    header{border-bottom:1px solid var(--line);background:var(--soft)}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:20px}
-    nav{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-    nav a{font-weight:600;color:var(--fg)}
+    header{border-bottom:1px solid var(--line);background:linear-gradient(180deg, var(--soft), rgba(238, 243, 249, 0.25))}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:22px}
+    nav{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+    nav a{font-weight:600;color:var(--fg);font-size:0.96rem}
     nav a:hover{text-decoration:underline}
-    .hero{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;padding:28px 0}
-    .hero img{width:120px;height:120px;border-radius:60px;object-fit:cover;border:2px solid var(--line);background:#fff}
-    h1{margin:0 0 4px 0;font-size:1.9rem;line-height:1.2}
-    .meta{color:var(--muted);font-size:.95rem}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .chip{padding:4px 10px;border:1px solid var(--line);border-radius:999px;font-size:.85rem;background:var(--chip)}
-    section{padding:32px 0;border-bottom:1px solid var(--line)}
-    h2{margin:0 0 12px 0;font-size:1.35rem}
-    h3{margin:12px 0 10px 0;font-size:1.05rem}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .card{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--bg)}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:var(--fg);background:transparent}
-    .btn:hover{background:var(--soft)}
+    .hero{display:grid;grid-template-columns:132px 1fr;gap:24px;align-items:center;padding:36px 0}
+    .hero img{width:132px;height:132px;border-radius:50%;object-fit:cover;border:3px solid var(--surface);box-shadow:var(--shadow-soft);background:#fff}
+    h1{margin:0 0 8px 0;font-size:2.15rem;line-height:1.2;letter-spacing:-0.02em}
+    .meta{color:var(--muted);font-size:1rem}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .chip{padding:6px 11px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;background:var(--chip);font-weight:600}
+    section{padding:42px 0;border-bottom:1px solid var(--line)}
+    h2{margin:0 0 16px 0;font-size:1.58rem;line-height:1.3;letter-spacing:-0.01em}
+    h3{margin:16px 0 12px 0;font-size:1.14rem;line-height:1.4}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .card{border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface);box-shadow:var(--shadow-soft);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:color-mix(in srgb, var(--line) 70%, var(--accent) 30%)}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:var(--fg);background:var(--surface);font-weight:600;transition:all .2s ease}
+    .btn:hover{background:var(--soft);border-color:color-mix(in srgb, var(--line) 65%, var(--accent) 35%);text-decoration:none}
+    .btn-primary{background:var(--accent);color:#fff;border-color:transparent}
+    .btn-primary:hover{background:color-mix(in srgb, var(--accent) 88%, #000 12%);color:#fff}
     ul{padding-left:20px;margin:8px 0}
     .pub li{margin-bottom:12px}
     .muted{color:var(--muted)}
     footer{padding:28px 0}
-    .lang-toggle{display:flex;gap:8px;margin-bottom:10px}
-    .lang-toggle button{border:1px solid var(--line);background:transparent;border-radius:8px;padding:6px 10px;cursor:pointer;color:var(--fg)}
-    .lang-toggle button.active{background:var(--fg);color:var(--bg)}
+    .lang-toggle{display:flex;gap:10px;margin-bottom:16px}
+    .lang-toggle button{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;cursor:pointer;color:var(--fg);font-weight:600;transition:all .2s ease}
+    .lang-toggle button:hover{border-color:color-mix(in srgb, var(--line) 60%, var(--accent) 40%)}
+    .lang-toggle button.active{background:var(--fg);color:var(--surface);border-color:var(--fg)}
+    .science-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .science-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 10px}
+    .science-meta span{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:3px 8px;background:var(--soft);border-radius:999px;border:1px solid var(--line)}
+    .science-source{font-size:.9rem;color:var(--muted);margin:0 0 8px}
+    .science-summary{margin:0 0 14px}
     @media (max-width:760px){
       .hero{grid-template-columns:1fr;text-align:center}
       .hero img{margin:0 auto}
       .grid{grid-template-columns:1fr}
       nav{justify-content:center}
+      section{padding:34px 0}
+      h1{font-size:1.9rem}
     }
     /* Accessible skip link */
     .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
@@ -357,6 +374,7 @@
 <section id="writings" aria-label="Science Writing">
 
   <h2>Science Writing</h2>
+  <p class="muted">Selected articles on technology, society, and scientific communication across English and Tamil platforms.</p>
 
   <div class="lang-toggle" role="tablist" aria-label="Language filter">
     <button id="tab-en" class="active" aria-selected="true" aria-controls="panel-en" role="tab">English</button>
@@ -364,26 +382,11 @@
   </div>
 
   <div id="panel-en" role="tabpanel" aria-labelledby="tab-en">
-    <ul>
-      <li>
-        <a href="science-communicators.html" target="_blank" rel="noopener">
-          Science Communicators in STEM: Shaping Public Perceptions
-        </a>
-        — A short reflection on how communication shapes our understanding of sustainability and engineering.
-      </li>
-    </ul>
+    <div id="science-writing-en" class="science-grid" aria-live="polite"></div>
   </div>
 
-  <!-- ✅ Your Tamil panel goes here -->
   <div id="panel-ta" role="tabpanel" aria-labelledby="tab-ta" hidden>
-    <ul>
-      <li>
-        <a href="origami-jwst-tamil.html" target="_blank" rel="noopener">
-          காகித ஓடங்களும் ஜேம்ஸ் வெப் விண்வெளித் தொலைநோக்கியும்
-        </a>
-        — ஓரிகாமி தொழில்நுட்பம் பொறியியல் மற்றும் விண்வெளி ஆய்வில் எப்படி பயன்படுத்தப்படுகிறது என்பதை விளக்கும் அறிவியல் கட்டுரை.
-      </li>
-    </ul>
+    <div id="science-writing-ta" class="science-grid" aria-live="polite"></div>
   </div>
 
 </section>
@@ -425,6 +428,67 @@
 
 <!-- Language toggle + simple email protection -->
 <script>
+  const scienceArticles = {
+    en: [
+      {
+        title: "The AI takeoff: India’s narrow path for upskilling",
+        author: "Sree Arravind",
+        date: "Feb 06, 2026",
+        category: "Education, Tech",
+        publication: "Youth Ki Awaaz",
+        summary: "As agentic AI systems rapidly automate software and research workflows, India faces a narrow window to redesign upskilling. The article argues for a strategic shift from routine execution to supervision intelligence across academia, industry, and deep-tech innovation.",
+        url: "https://www.youthkiawaaz.com/2026/02/the-ai-takeoff-indias-narrow-path-for-upskilling"
+      },
+      {
+        title: "Science Communicators in STEM: Shaping Public Perceptions",
+        author: "Sreearravind M",
+        date: "2025",
+        category: "Science Communication",
+        publication: "Personal Website",
+        summary: "A short reflection on how effective communication shapes public understanding of sustainability, engineering choices, and scientific trust.",
+        url: "science-communicators.html"
+      }
+    ],
+    ta: [
+      {
+        title: "காகித ஓடங்களும் ஜேம்ஸ் வெப் விண்வெளித் தொலைநோக்கியும்",
+        author: "ஸ்ரீ அரவிந்த்",
+        date: "2025",
+        category: "அறிவியல் தொடர்பியல்",
+        publication: "தனிப்பட்ட வலைத்தளம்",
+        summary: "ஓரிகாமி தொழில்நுட்பம் பொறியியல் மற்றும் விண்வெளி ஆய்வில் எப்படி பயன்படுத்தப்படுகிறது என்பதை விளக்கும் அறிவியல் கட்டுரை.",
+        url: "origami-jwst-tamil.html"
+      }
+    ]
+  };
+
+  function renderScienceCards(language, containerId){
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+
+    scienceArticles[language].forEach((article)=>{
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.setAttribute('role', 'article');
+
+      card.innerHTML = `
+        <h3>${article.title}</h3>
+        <p class="science-source">${article.author} · ${article.publication}</p>
+        <div class="science-meta">
+          <span>${article.date}</span>
+          <span>${article.category}</span>
+        </div>
+        <p class="science-summary">${article.summary}</p>
+        <a class="btn btn-primary" href="${article.url}" target="_blank" rel="noopener">Read Article</a>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+  renderScienceCards('en', 'science-writing-en');
+  renderScienceCards('ta', 'science-writing-ta');
+
   // language tabs
   const enBtn = document.getElementById('tab-en');
   const taBtn = document.getElementById('tab-ta');
