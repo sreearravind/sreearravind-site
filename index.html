@@ -1,395 +1,576 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Dr. Sreearravind M — Metallurgy & Fatigue · Materials Data Intelligence</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Dr. Sreearravind M – Assistant Professor, metallurgy & fatigue of Al alloys, ECAP, DCT, computational platforms for fatigue data. Publications in EN/TA.">
-  <link rel="canonical" href="https://example.com/"><!-- TODO: replace after you set your domain -->
-  <meta name="author" content="Dr. Sreearravind M">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Dr. Sreearravind M — Metallurgy & Fatigue of Aluminium Alloys">
-  <meta property="og:description" content="Materials research • Fatigue of Al 6063 • ECAP • Heat Treatment • DCT • Computational workflows • Fatigue Data Platform">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="photo.jpg"><!-- TODO: ensure this exists -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@sreearravind">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    /* ----- minimalistic, clean, professional ----- */
-    :root{
-      --maxw: 1140px;
-      --bg: #f8fafd;
-      --surface: #ffffff;
-      --fg: #132236;
-      --muted: #4f6176;
-      --line: #dce3ec;
-      --accent: #1a4cbc;
-      --accent-soft: #e3ebff;
-      --soft: #edf2f9;
-      --chip-bg: #f0f4fe;
-      --shadow-card: 0 12px 28px -8px rgba(0, 20, 40, 0.08);
-      --shadow-hover: 0 20px 32px -10px rgba(0, 30, 60, 0.14);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0c111b; --surface:#131d2b; --fg:#e6edf8; --muted:#a1b3cc; --line:#283442; --soft:#192333; --chip-bg:#1f2c40; --accent:#8aaeff; --accent-soft:#223353;
-        --shadow-card: none; --shadow-hover: none;
-      }
-    }
-    *{box-sizing:border-box; margin:0}
-    html{scroll-behavior:smooth}
-    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; font-size:1rem; font-weight:400}
-    a{color:var(--accent); text-decoration:none; font-weight:500}
-    a:hover{text-decoration:underline}
-    p{margin:1rem 0 0}
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:1.5rem 2rem}
-    @media (max-width:640px){.wrap{padding:1.2rem 1.2rem}}
-
-    /* header / nav */
-    header{background:var(--surface); border-bottom:1px solid var(--line); position:sticky; top:0; backdrop-filter:blur(8px); background:rgba(from var(--surface) r g b / 0.8); z-index:10}
-    nav{display:flex; flex-wrap:wrap; gap:2rem; align-items:center; font-weight:500}
-    nav a{color:var(--fg); font-size:0.95rem; transition:color 0.15s}
-    nav a:hover{color:var(--accent); text-decoration:none}
-    .nav-btn{background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent); padding:0.3rem 1rem; border-radius:30px; font-weight:600}
-    .nav-btn:hover{background:var(--accent); color:#fff}
-
-    /* hero */
-    .hero{display:flex; gap:2.5rem; align-items:center; padding:2.2rem 0 1.8rem}
-    .hero-img{width:130px; height:130px; border-radius:50%; object-fit:cover; border:4px solid var(--surface); box-shadow:0 8px 20px rgba(0,0,0,0.08); background:#fff}
-    .hero h1{font-size:2.6rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; margin:0 0 0.3rem}
-    .hero .subhead{font-size:1.3rem; font-weight:500; color:var(--muted); margin-bottom:0.5rem}
-    .hero .meta-tagline{font-size:1.05rem; color:var(--accent); font-weight:500; margin:0.25rem 0 0.5rem}
-    .chips{display:flex; gap:0.6rem; flex-wrap:wrap; margin:1rem 0 0}
-    .chip{background:var(--chip-bg); border:1px solid var(--line); padding:0.3rem 1rem; border-radius:40px; font-size:0.8rem; font-weight:600; color:var(--fg)}
-
-    /* section */
-    section{padding:3rem 0; border-bottom:1px solid var(--line)}
-    h2{font-size:2rem; font-weight:700; letter-spacing:-0.01em; margin:0 0 1.4rem; border-left:6px solid var(--accent); padding-left:1rem}
-    h3{font-size:1.3rem; font-weight:600; margin:1.8rem 0 0.8rem; color:var(--fg)}
-
-    /* card / grid */
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:1.8rem}
-    .card{border:1px solid var(--line); border-radius:24px; padding:1.6rem; background:var(--surface); box-shadow:var(--shadow-card); transition:all 0.2s ease}
-    .card:hover{box-shadow:var(--shadow-hover); transform:translateY(-3px)}
-    .card strong{font-size:1.1rem; display:block; margin-bottom:0.5rem}
-    .badge{display:inline-block; background:var(--accent-soft); color:var(--accent); border-radius:40px; padding:0.2rem 1rem; font-size:0.7rem; font-weight:700; letter-spacing:0.02em; border:1px solid var(--accent)}
-
-    /* publication list */
-    .pub-list{list-style:none; padding:0}
-    .pub-list li{margin-bottom:1rem; padding-left:1.2rem; border-left:3px solid var(--accent-soft)}
-    .pub-list li strong{font-weight:600}
-    .pub-doi{font-size:0.85rem; background:var(--soft); border-radius:20px; padding:0.2rem 0.8rem; margin-left:0.8rem; white-space:nowrap}
-
-    /* accordion (preserved style but polished) */
-    .accordion-btn{cursor:pointer; width:100%; text-align:left; border:1px solid var(--line); border-radius:14px; background:var(--soft); padding:1rem 1.2rem; margin:1rem 0 0.2rem; font-weight:600; font-size:1rem; transition:0.15s}
-    .accordion-btn:hover{background:var(--accent-soft); border-color:var(--accent)}
-    .accordion-content{display:none; margin-top:0.8rem; border-left:3px solid var(--accent); padding-left:1.5rem; background:var(--surface); border-radius:0 16px 16px 0}
-
-    /* science writing cards */
-    .science-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; margin-top:1.2rem}
-    .lang-toggle{display:flex; gap:0.8rem; margin:1rem 0}
-    .lang-toggle button{border:1px solid var(--line); background:var(--surface); border-radius:30px; padding:0.6rem 1.6rem; font-weight:600; cursor:pointer; color:var(--fg)}
-    .lang-toggle button.active{background:var(--fg); color:var(--surface); border-color:var(--fg)}
-
-    .project-links{display:flex; gap:1rem; flex-wrap:wrap; margin:1.4rem 0 0.5rem}
-    .project-links .btn{display:inline-flex; align-items:center; gap:0.3rem; background:var(--accent); color:#fff; border:none; padding:0.7rem 1.4rem; border-radius:40px; font-weight:600}
-    .btn-outline{background:transparent; border:1.5px solid var(--accent); color:var(--accent); padding:0.7rem 1.4rem; border-radius:40px; font-weight:600}
-    .btn-outline:hover{background:var(--accent-soft); text-decoration:none}
-
-    footer{display:flex; justify-content:space-between; padding:2rem 0; color:var(--muted); font-size:0.9rem}
-
-    .skip-link{position:absolute; left:-999px}
-    .skip-link:focus{left:1rem; top:1rem; background:var(--fg); color:var(--bg); padding:0.5rem; z-index:999}
-
-    @media (max-width:760px){
-      .hero{flex-direction:column; text-align:center}
-      .hero h1{font-size:2.2rem}
-      .grid-2{grid-template-columns:1fr}
-      nav{gap:1rem; justify-content:center}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. Sreearravind Mani | Metallurgy & Materials Informatics</title>
+<meta name="description" content="Academic and research portfolio of Dr. Sreearravind Mani: experimental metallurgy, fatigue, materials data systems, publications, patents and engineering education.">
+<link rel="canonical" href="https://sreearravind.github.io/sreearravind-site/">
+<meta property="og:title" content="Dr. Sreearravind Mani | Metallurgy & Materials Informatics">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sreearravind.github.io/sreearravind-site/">
+<meta property="og:description" content="From experimental metallurgy to traceable materials knowledge.">
+<meta property="og:image" content="https://sreearravind.github.io/sreearravind-site/photo.jpg">
+<meta name="theme-color" content="#111e36">
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer>
+</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Dr. Sreearravind Mani", "jobTitle": "Assistant Professor", "url": "https://sreearravind.github.io/sreearravind-site/", "worksFor": {"@type": "CollegeOrUniversity", "name": "J.J. College of Engineering and Technology"}, "sameAs": ["https://orcid.org/0000-0002-5981-4821", "https://github.com/sreearravind", "https://www.linkedin.com/in/sreearravind-m-ph-d-7079b472/"], "knowsAbout": ["Experimental metallurgy", "Low-cycle fatigue", "Materials informatics", "Manufacturing data systems"]}</script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header>
-  <div class="wrap">
-    <nav aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#writings">Writings</a>
-      <a href="#contact">Contact</a>
-      <a class="nav-btn" href="#cv">CV</a>
-    </nav>
-  </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<nav class="wrap nav" aria-label="Main navigation">
+<a class="brand" href="#home">SM<span> / RESEARCH</span>
+</a>
+<button class="menu-toggle" aria-controls="nav-links" aria-expanded="false" hidden>Menu</button>
+<div id="nav-links">
+<a href="#research">Research</a>
+<a href="#patents">IP</a>
+<a href="#publications">Publications</a>
+<a href="#computational">Platforms</a>
+<a href="#teaching">Teaching</a>
+<a href="#contact">Contact ↗</a>
+</div>
+</nav>
 </header>
-
-<main id="main" class="wrap" tabindex="-1">
-  <!-- HERO (refined) -->
-  <div class="hero">
-    <img src="photo.jpg" alt="Portrait of Dr. Sreearravind M" class="hero-img"><!-- TODO: place photo.jpg -->
-    <div>
-      <h1>Dr. Sreearravind M</h1>
-      <div class="subhead">Assistant Professor · Materials & Fatigue Researcher</div>
-      <div class="meta-tagline">Materials Engineering · Fatigue of Al alloys · Computational workflows</div>
-      <div class="chips">
-        <span class="chip">Al 6063</span>
-        <span class="chip">ECAP</span>
-        <span class="chip">T6 / DCT</span>
-        <span class="chip">Low‑cycle fatigue</span>
-        <span class="chip">EBSD/XRD</span>
-        <span class="chip">Python · PostgreSQL</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ABOUT (enhanced with current role, computational platform) -->
-  <section id="about" aria-label="About">
-    <h2>About</h2>
-    <p>I am an Assistant Professor at JJ College of Engineering and Technology, Tiruchirappalli, and a materials researcher specializing in the fatigue behaviour of aluminium alloys. My Ph.D. (SASTRA Deemed University) investigated how processing routes—<strong>ECAP, T6 heat treatment, and deep cryogenic treatment (DCT)</strong>—affect the microstructure and low‑cycle fatigue of Al 6063, combining mechanical testing, SEM/EBSD, and fractography.</p>
-    <p>Beyond experimental metallurgy, I develop computational tools to organise fragmented fatigue data. I am currently building a <strong>Fatigue Data Intelligence Platform</strong>—a Python/PostgreSQL/Streamlit system that maps Process–Structure–Property–Performance (PSPP) relationships and enables statistical/ML workflows for reliability analysis.</p>
-    <p class="muted" style="margin-top:1rem"><strong>Location:</strong> India · Open to relocation · Industry & research collaborations welcome.</p>
-  </section>
-
-  <!-- RESEARCH & THESIS (structure preserved, wording clarified) -->
-  <section id="research" aria-label="Research & Thesis">
-    <h2>Research & Thesis</h2>
-    <div class="grid-2">
-      <!-- PhD card -->
-      <div class="card" role="article" aria-labelledby="thesis-title">
-        <span class="badge">Ph.D. in Mechanical Engineering (Metallurgical Science) </span>
-        <strong id="thesis-title" style="margin-top:0.8rem">Fatigue Behaviour of Al 6063 under ECAP, T6 & DCT</strong>
-        <p class="muted" style="margin:0.3rem 0 0.8rem">SASTRA Deemed University · Supervisor: Dr S. Ramesh Kumar</p>
-        <ul style="margin-bottom:1rem; padding-left:1.2rem">
-          <li>Low‑cycle fatigue (0.4% TSA) across multiple frequencies</li>
-          <li>ECAP 90°/120°, T6, deep cryogenic treatment</li>
-          <li>SEM/XRD/Microstructure + fractography; applications in frames/stringers</li>
-        </ul>
-        <a class="btn-outline" style="padding:0.4rem 1.2rem" href="http://hdl.handle.net/10603/642687" target="_blank" rel="noopener">Shodhganga PDF</a>
-      </div>
-      <!-- M.Tech card -->
-      <div class="card" role="article" aria-labelledby="mtech-title">
-        <span class="badge">M.Tech (Adv. Mfg.)</span>
-        <strong id="mtech-title">Graphene‑Al composites via powder metallurgy</strong>
-        <p class="muted" style="margin:0.3rem 0 0.8rem">SASTRA University (2016–2018)</p>
-        <ul style="margin-bottom:1rem; padding-left:1.2rem">
-          <li>Graphene oxide reinforced Al matrix – mechanical & tribology</li>
-          <li>Optimisation of GO composition for strength</li>
-        </ul>
-        <a class="btn-outline" style="padding:0.4rem 1.2rem" href="MTech_Synopsis.pdf" target="_blank">Synopsis PDF</a>
-      </div>
-    </div>
-    <!-- B.E. + 3MT cards (preserved, grouped in same grid style) -->
-    <div class="grid-2" style="margin-top:1.5rem">
-      <div class="card">
-        <span class="badge">B.E. Automobile</span>
-        <strong>Cylinder deactivation for diesel engine efficiency</strong>
-        <p class="muted">Government Engineering College, Erode (2012–2016)</p>
-        <p style="margin-top:0.5rem; font-size:0.95rem">Experimental study on multi‑cylinder deactivation to improve fuel economy and lower emissions.</p>
-      </div>
-      <div class="card">
-        <span class="badge">3MT® poster 2024</span>
-        <strong>Arivodhayam Research Conclave – fatigue of Al 6063</strong>
-        <p style="margin-top:0.5rem; font-size:0.95rem">Concise summary of microstructure–fatigue trends across HT, DCT, ECAP routes.</p>
-        <div style="margin-top:0.8rem">
-          <a class="btn-outline" style="padding:0.2rem 1rem" href="3MT-poster.html">View poster</a>
-          <a class="btn-outline" style="padding:0.2rem 1rem; margin-left:0.5rem" href="3MT_Sree_Final.pdf" target="_blank">PDF</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPUTATIONAL PROJECT (new prominent block) -->
-  <section id="computational" aria-label="Computational Project">
-    <h2>Computational project</h2>
-    <div class="card" style="max-width:100%; background:var(--accent-soft); border-color:var(--accent);">
-      <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center">
-        <div style="flex:2">
-          <h3 style="margin-top:0; color:var(--accent)">⚙️ Fatigue Data Intelligence Platform</h3>
-          <p style="font-size:1rem">A system to structure scattered experimental fatigue data, map PSPP relationships, and enable reliability analysis / ML workflows. Built with Python, PostgreSQL, Streamlit, and version‑controlled via GitHub.</p>
-          <div class="project-links">
-            <a class="btn" href="https://github.com/sreearravind/fatigue_DBMS" target="_blank" rel="noopener">GitHub repository</a>
-            <a class="btn-outline" style="background:var(--surface); border-color:var(--accent)" href="https://fatiguedbms-feo394nhh75ex5cfn6ua4t.streamlit.app" target="_blank" rel="noopener">Streamlit app</a>
-          </div>
-        </div>
-        <div style="flex:1; min-width:140px; background:var(--surface); border-radius:20px; padding:1rem; text-align:center">
-          <span style="font-weight:600">Tech stack</span><br>
-          <span style="color:var(--muted)">Python · PostgreSQL · Streamlit · GitHub</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PUBLICATIONS & PATENTS (structure preserved, better readability) -->
-  <section id="publications" aria-label="Publications & Patents">
-    <h2>Publication & Patent information</h2>
-
-    <h3>SCI‑E journals</h3>
-    <ul class="pub-list">
-      <li><strong>Sreearravind, M.</strong>, Ravisankar, B., & Ramesh Kumar, S. (2024). <em>Low Cycle Fatigue Behaviour of Al 6063 Processed by ECAP at 90° and 120°.</em> Materials Today Communications. <a href="https://doi.org/10.1016/j.mtcomm.2024.111401" target="_blank">DOI</a></li>
-      <li><strong>Sreearravind, M.</strong> & Subramanian, R. K. (2023). <em>Low cycle fatigue of deep cryogenic treated 6063 Al alloy.</em> Structures, 58, 105588. <a href="https://doi.org/10.1016/j.istruc.2023.105588" target="_blank">DOI</a></li>
-      <li>Kumar, S. R. & <strong>Sreearravind, M.</strong> (2022). <em>Influence of Si Content on Fatigue Life for Heat Treated Cast Al-Si-Mg.</em> Silicon, 14(3), 977–987. <a href="https://doi.org/10.1007/s12633-020-00874-8" target="_blank">DOI</a></li>
-      <li>Ramesh Kumar, S. & <strong>Sreearravind, M.</strong> (2022). <em>MIAB Welded Dissimilar Boiler Tubes.</em> J. Mater. Eng. Perform., 31(3), 1846–1856. <a href="https://doi.org/10.1007/s11665-021-06343-6" target="_blank">DOI</a></li>
-    </ul>
-
-    <h3>Patent</h3>
-    <ul class="pub-list">
-      <li><strong>Indian patent application 202341047769</strong> (filed 15/07/2023). “An Apparatus for Artefact Knitting.” Inventors: Ramesh Kumar S., Santhosh Kumar S., <strong>Sreearravind M.</strong> – magnetic alignment fixture for MIAB welding.</li>
-    </ul>
-
-    <!-- ACCORDION (preserved, minimal style) -->
-    <button class="accordion-btn" id="btn-scopus" data-title="Scopus Indexed Journals" onclick="toggleAccordion('scopus-content','btn-scopus')">▼ Scopus Indexed Journals</button>
-    <div id="scopus-content" class="accordion-content">
-      <ul class="pub-list">
-        <li>Ramesh Kumar, S., Sreearravind, M. et al. (2020). <em>Low Cycle Fatigue behavior of heat treated EN-47 Spring Steel.</em> Mater. Today Proc., 22, 2191–2198. <a href="https://doi.org/10.1016/j.matpr.2020.03.299" target="_blank">DOI</a></li>
-        <li>Sreearravind, M., Ramesh Kumar, S. et al. (2020). <em>LCF of Al 6063 at 0.2 Hz.</em> Mater. Today Proc., 27, 2376–2380. <a href="https://doi.org/10.1016/j.matpr.2019.09.133" target="_blank">DOI</a></li>
-        <li>+ six more publications (see original file) – preserved for brevity.</li>
-      </ul>
-    </div>
-
-    <button class="accordion-btn" id="btn-books" data-title="Book Chapters" onclick="toggleAccordion('books-content','btn-books')">▼ Book Chapters</button>
-    <div id="books-content" class="accordion-content">
-      <ul class="pub-list">
-        <li>Sreearravind, M., Ramesh Kumar, S., & Ahilan, C. (2022). <em>Fatigue Characterization and Fractographic Analysis of Al 6063.</em> IGI Global.</li>
-        <li>Kumar Subramanian, R., Kumar Srirangan, A., & Sreearravind, M. (2020). <em>Severely Plastic Deformed Magnesium Based Alloys.</em> IntechOpen. <a href="https://doi.org/10.5772/intechopen.88778" target="_blank">DOI</a></li>
-        <li>Ramesh Kumar, S., Ramesh, G., Sreearravind, M., Senthil, T. (2024). <em>Reutilization of Waste Polymeric Materials for 3D Printing.</em> Springer. <a href="https://doi.org/10.1007/978-981-99-7552-5_54" target="_blank">DOI</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- TEACHING (new section) -->
-  <section id="teaching" aria-label="Teaching">
-    <h2>Teaching & academic role</h2>
-    <div class="card" style="max-width:700px">
-      <p><strong>Assistant Professor</strong><br>JJ College of Engineering and Technology, Tiruchirappalli · since Jan-2026</p>
-    </div>
-  </section>
-
-  <!-- SCIENCE WRITING (preserved structure, minor formatting) -->
-  <section id="writings" aria-label="Science Writing">
-    <h2>Science writing</h2>
-    <p class="muted">Selected articles on technology, society, and scientific communication (English & Tamil).</p>
-    <div class="lang-toggle" role="tablist" aria-label="Language filter">
-      <button id="tab-en" class="active" aria-selected="true" aria-controls="panel-en" role="tab">English</button>
-      <button id="tab-ta" aria-selected="false" aria-controls="panel-ta" role="tab">Tamil</button>
-    </div>
-    <div id="panel-en" role="tabpanel" aria-labelledby="tab-en">
-      <div id="science-writing-en" class="science-grid"></div>
-    </div>
-    <div id="panel-ta" role="tabpanel" aria-labelledby="tab-ta" hidden>
-      <div id="science-writing-ta" class="science-grid"></div>
-    </div>
-  </section>
-
-  <!-- CV download -->
-  <section id="cv" aria-label="CV">
-    <h2>Curriculum vitae</h2>
-    <a class="btn" href="Sreearravind_CV.pdf" download>📄 Download full CV (PDF)</a>
-    <!-- TODO: place CV -->
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" aria-label="Contact">
-    <h2>Contact & profiles</h2>
-    <div class="grid-2">
-      <div class="card">
-        <strong>Email</strong><br>
-        <a id="email-link" href="#" rel="nofollow">arravindmani.505 [at] gmail.com</a><br>
-        <span class="muted" style="font-size:0.9rem">(click to reveal mailto)</span>
-      </div>
-      <div class="card">
-        <strong>Professional links</strong><br>
-        <a href="https://www.linkedin.com/in/sreearravind-m-ph-d-7079b472/" target="_blank">LinkedIn</a> ·
-        <a href="https://x.com/sreearravind" target="_blank">X (Twitter)</a> ·
-        <a href="https://scholar.google.com/citations?user=bBqX3swAAAAJ&hl=en" target="_blank">Google Scholar</a> ·
-        <a href="https://orcid.org/0000-0002-5981-4821" target="_blank">ORCID</a><br>
-        <a href="https://github.com/sreearravind" target="_blank">GitHub</a> (fatigue‑platform)
-      </div>
-    </div>
-  </section>
+<main id="main">
+<section class="hero" id="home">
+<div class="wrap hero-grid">
+<div>
+<p class="eyebrow">METALLURGY · INFORMATICS · EDUCATION</p>
+<h1>Dr. Sreearravind<br>Mani<span class="dot">.</span>
+</h1>
+<p class="appointment">
+<strong>Assistant Professor</strong>
+<br>Department of Mechanical Engineering<br>J.J. College of Engineering and Technology, Tiruchirappalli</p>
+<p class="tagline">Experimental Metallurgy &amp; Fatigue (LCF, DCT, ECAP) | Materials Data Systems &amp; Informatics (Python, PostgreSQL, FastAPI, Streamlit)</p>
+<div class="actions">
+<a class="button light" href="#publications">Explore research ↗</a>
+<a class="button ghost" href="#computational">View platforms</a>
+</div>
+</div>
+<aside class="profile">
+<img src="photo.jpg" alt="Dr. Sreearravind Mani" width="320" height="360" fetchpriority="high">
+<div class="profile-caption">
+<span>EXPERIMENT → DATA → INSIGHT</span>
+<p>Connecting material behaviour<br>with traceable engineering knowledge.</p>
+</div>
+</aside>
+</div>
+<div class="wrap stats">
+<div>
+<strong>16</strong>
+<span>Published works</span>
+</div>
+<div>
+<strong>01</strong>
+<span>Granted patent</span>
+</div>
+<div>
+<strong>01</strong>
+<span>Published patent application</span>
+</div>
+<div>
+<strong>90</strong>
+<span>Scheduled theory periods · 2026</span>
+</div>
+</div>
+</section>
+<div class="wrap">
+<section id="about" class="section">
+<div class="section-heading">
+<p class="eyebrow">01 / PROFILE</p>
+<h2>Experimental depth.<br>Computational perspective.</h2>
+</div>
+<div class="about-grid">
+<p class="intro">I study how processing changes the microstructure, mechanical response and fatigue life of materials. Alongside experimental research, I build data systems that make engineering records structured, traceable and useful.</p>
+<div>
+<p>My doctoral research at SASTRA Deemed University examined heat treatment, deep cryogenic treatment and equal-channel angular pressing of Al 6063. My current work connects fatigue reliability, manufacturing-data infrastructure and digital engineering education.</p>
+<div class="tags">
+<span>LCF Testing</span>
+<span>SEM/XRD</span>
+<span>DCT & ECAP</span>
+<span>Python</span>
+<span>PostgreSQL</span>
+<span>FastAPI</span>
+<span>Streamlit</span>
+</div>
+</div>
+</div>
+<div class="actions profile-links">
+<a class="button secondary" href="mailto:sreearravindm@jjcet.ac.in">Institutional email</a>
+<a class="button secondary" href="mailto:arravindmani.505@gmail.com">Personal email</a>
+<a class="button secondary" href="https://orcid.org/0000-0002-5981-4821">ORCID · 0000-0002-5981-4821</a>
+<a class="button secondary" href="https://github.com/sreearravind/">GitHub</a>
+<a class="button secondary" href="https://www.linkedin.com/in/sreearravind-m-ph-d-7079b472/">LinkedIn</a>
+</div>
+</section>
+<section id="research" class="section">
+<div class="section-heading">
+<p class="eyebrow">02 / RESEARCH</p>
+<h2>Processing. Structure. Performance.</h2>
+<p>Experimental foundations across fatigue, metallurgy and composite processing.</p>
+</div>
+<div class="grid two">
+<article class="card">
+<p class="eyebrow">PHD · SASTRA · 2018–2025</p>
+<h3>Fatigue behaviour of Al 6063</h3>
+<p>Heat-treated, deep cryogenic treated and ECAP-processed conditions; comparison of 90° and 120° channel-angle dies.</p>
+<p>Servo-hydraulic low-cycle fatigue, tensile and hardness testing, microscopy, XRD and fractography connect processing routes to cyclic response and failure.</p>
+<details>
+<summary>Thesis title</summary>
+<p>Fatigue Behaviour of Al 6063 alloy in Heat Treated, Deep Cryogenic Treated and Equal Channel Angular Pressing (ECAP) Processed Conditions</p>
+<p>Supervisor: Dr. S. Ramesh Kumar</p>
+</details>
+</article>
+<article class="card">
+<p class="eyebrow">MTECH · ADVANCED MANUFACTURING · 2016–2018</p>
+<h3>Aluminium–graphene nanoplatelet composites</h3>
+<p>Powder-metallurgy fabrication with 2, 3 and 4 wt% GNP reinforcement, followed by sintering, hot extrusion and mechanical / tribological characterisation.</p>
+<p>Investigated dispersion, interfacial bonding and the balance between strength, ductility and wear resistance.</p>
+<div class="actions">
+<a class="button secondary" href="MTech_Synopsis.pdf">MTech synopsis · PDF</a>
+</div>
+</article>
+</div>
+<div class="research-note">
+<div>
+<h3>Earlier engineering foundation</h3>
+<p>BE Automobile Engineering, Government College of Engineering, Erode (2012–2016). Project on diesel-engine fuel efficiency through cylinder deactivation.</p>
+</div>
+<div>
+<h3>Research communication</h3>
+<p>Fatigue research presented at the 2024 Arivodhayam Research Conclave.</p>
+<a href="3MT-poster.html">Explore the 3MT poster ↗</a>
+</div>
+</div>
+</section>
+<section id="patents" class="section">
+<div class="section-heading">
+<p class="eyebrow">03 / INTELLECTUAL PROPERTY</p>
+<h2>Research translated into inventions.</h2>
+</div>
+<div class="grid two">
+<article class="card patent granted">
+<span class="status green">Granted · 26 May 2026</span>
+<p class="patent-number">590397</p>
+<h3>An Apparatus for Artefact Knitting</h3>
+<p>MIAB plate-welding apparatus</p>
+<dl>
+<dt>Application</dt>
+<dd>202341047769</dd>
+<dt>Assignee</dt>
+<dd>SASTRA Deemed University</dd>
+<dt>Inventors</dt>
+<dd>S. Ramesh Kumar · S. Santhosh Kumar · M. Sreearravind</dd>
+</dl>
+</article>
+<article class="card patent">
+<span class="status">Published application · 26 June 2026</span>
+<p class="patent-number smaller">IN202641074369 A1</p>
+<h3>Adaptive vibration isolation handle with grip-force coupled pneumatic damping for handheld industrial tools</h3>
+<dl>
+<dt>Application</dt>
+<dd>202641074369</dd>
+<dt>Assignee / Applicant</dt>
+<dd>J.J. College of Engineering and Technology</dd>
+<dt>Inventors</dt>
+<dd>M. Sreearravind · P. Mathiyalagan</dd>
+</dl>
+<p class="fine">Published application; pre-grant stage.</p>
+</article>
+</div>
+</section>
+<section id="publications" class="section">
+<div class="section-heading">
+<p class="eyebrow">04 / PUBLICATIONS</p>
+<h2>A growing body of materials research.</h2>
+<p>16 published works across journals, proceedings and book chapters. Two manuscripts under review, listed separately.</p>
+</div>
+<div class="tabs" hidden aria-label="Publication categories">
+<button data-category="all" class="active">All published · 16</button>
+<button data-category="journals">Journals · 5</button>
+<button data-category="chapters">Book chapters · 3</button>
+<button data-category="proceedings">Proceedings · 8</button>
+<button data-category="review">Under review · 2</button>
+</div>
+<p id="publication-count" class="fine" aria-live="polite">16 published works and 2 manuscripts</p>
+<div id="publication-list" class="publication-list">
+<article class="publication featured" data-category="journals">
+<div class="pub-year">2026</div>
+<div>
+<span class="status">Featured · 2026 SCI-E publication</span>
+<h3>Fatigue Data Infrastructure for Reliability Analytics: A Relational Database Framework for Traceable Fatigue Knowledge Integration</h3>
+<p class="authors">Mani, Sreearravind, and Ramesh Kumar Subramanian</p>
+<p class="venue">Journal of Materials Engineering and Performance.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1007/s11665-026-14593-5">DOI ↗</a>
+<a class="text-link" href="citations/p01.bib" download>BibTeX ↓</a>
+<a class="text-link" href="https://github.com/sreearravind/Fatigue-Data-Infrastructure-for-Reliability-Analytics">Repo ↗</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="journals">
+<div class="pub-year">2024</div>
+<div>
+<h3>Low Cycle Fatigue Behaviour of Aluminium 6063 Alloy Processed by Equal Channel Angular Pressing (ECAP) at 90° and 120° Channel Angles</h3>
+<p class="authors">Sreearravind, M.; Ravisankar, B.; Ramesh Kumar, S.</p>
+<p class="venue">Materials Today Communications, 42, 111401.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1016/j.mtcomm.2024.111401">DOI ↗</a>
+<a class="text-link" href="citations/p02.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="journals">
+<div class="pub-year">2023</div>
+<div>
+<h3>Experimental investigation on the low cycle fatigue performance and fractographic analysis of deep cryogenic treated 6063 aluminium alloy</h3>
+<p class="authors">Sreearravind, M.; Subramanian, R. K.</p>
+<p class="venue">Structures, 58, 105588.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1016/j.istruc.2023.105588">DOI ↗</a>
+<a class="text-link" href="citations/p03.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="journals">
+<div class="pub-year">2022</div>
+<div>
+<h3>Influence of Si Content on Fatigue Life for Heat Treated Cast Al-Si-mg Alloy Using Different Quenching Technique</h3>
+<p class="authors">Kumar, S. R.; Sreearravind, M.</p>
+<p class="venue">Silicon, 14(3), 977–987.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1007/s12633-020-00874-8">DOI ↗</a>
+<a class="text-link" href="citations/p04.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="journals">
+<div class="pub-year">2022</div>
+<div>
+<h3>Assessment of Magnetically Impelled Arc Butt Welded Dissimilar Boiler Graded Steel Tubes SAE213 T11 and SAE213 T91</h3>
+<p class="authors">Ramesh Kumar, S.; Sreearravind, M.</p>
+<p class="venue">Journal of Materials Engineering and Performance, 31(3), 1846–1856.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1007/s11665-021-06343-6">DOI ↗</a>
+<a class="text-link" href="citations/p05.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2020</div>
+<div>
+<h3>Low Cycle Fatigue behavior of heat treated EN-47 Spring Steel</h3>
+<p class="authors">Ramesh Kumar, S.; Sreearravind, M.; Sainathan, S.; Venkat, A.; Rahulram, S.; Senthil Kumar, S.; Senthil Kumaran, S.</p>
+<p class="venue">Materials Today: Proceedings, 22, 2191–2198.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1016/j.matpr.2020.03.299">DOI ↗</a>
+<a class="text-link" href="citations/p06.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2020</div>
+<div>
+<h3>Low cycle fatigue behavior of aluminium 6063 alloy under the cyclic frequency of 0.2 Hz</h3>
+<p class="authors">Sreearravind, M.; Ramesh Kumar, S.; RaviShankar, B.; Senthil Kumar, S.</p>
+<p class="venue">Materials Today: Proceedings, 27, 2376–2380.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1016/j.matpr.2019.09.133">DOI ↗</a>
+<a class="text-link" href="citations/p07.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2019</div>
+<div>
+<h3>Effect of Soaking Time on Evolution of Microstructure and Hardness during Annealing of EN-47 Spring Steel</h3>
+<p class="authors">Kumar, S. R.; Kumaran, S. S.; Ramesh, G.; Sreearravind, M.; Venkateswarlu, D.</p>
+<p class="venue">Materials Science Forum, 969, 427–432.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.4028/www.scientific.net/MSF.969.427">DOI ↗</a>
+<a class="text-link" href="citations/p08.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2019</div>
+<div>
+<h3>Experimental Analysis of SA213 Tube to SA387 Tube Plate Welding by Using Close Fit Technique in Absence of Supporting Plate</h3>
+<p class="authors">Kumaran, S. S.; Sreearravind, M.; Srinivasan, N.; Venkateswarlu, D.</p>
+<p class="venue">Materials Science Forum, 969, 570–575.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.4028/www.scientific.net/MSF.969.570">DOI ↗</a>
+<a class="text-link" href="citations/p09.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2019</div>
+<div>
+<h3>Effect of Mechanical Properties and Corrosion Behaviour of Martensitic Stainless Steel 410 1.6mm Butt Welded by Plasma Arc Welding</h3>
+<p class="authors">Sreearravind, M.; Kumar, S. R.; Kumaran, S. S.; Venkateswarlu, D.</p>
+<p class="venue">Materials Science Forum, 969, 601–606.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.4028/www.scientific.net/MSF.969.601">DOI ↗</a>
+<a class="text-link" href="citations/p10.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2019</div>
+<div>
+<h3>Effect of Microstructure and Mechanical Properties of Austenitic Stainless Steel 1.6mm Butt Welded by Plasma Arc Welding</h3>
+<p class="authors">Kumar, S. R.; Kumaran, S. S.; Sreearravind, M.; Venkateswarlu, D.</p>
+<p class="venue">Materials Science Forum, 969, 619–624.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.4028/www.scientific.net/MSF.969.619">DOI ↗</a>
+<a class="text-link" href="citations/p11.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2019</div>
+<div>
+<h3>X-Ray Diffraction and Microstructure Analysis of EN47 Spring Steel at Various Soaking Period of Time</h3>
+<p class="authors">Kumar, S. R.; Kumaran, S. S.; Ramesh, G.; Sreearravind, M.; Venkateswarlu, D.</p>
+<p class="venue">Materials Science Forum, 969, 104–109.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.4028/www.scientific.net/MSF.969.104">DOI ↗</a>
+<a class="text-link" href="citations/p12.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="proceedings">
+<div class="pub-year">2018</div>
+<div>
+<h3>Microstructural investigation of aluminum-graphene nano platelets composites prepared by powder metallurgy</h3>
+<p class="authors">Sreearravind, M.; Peddavarapu, S.; Raghuraman, S.</p>
+<p class="venue">AIP Conference Proceedings, 1952(1), 020103.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1063/1.5032065">DOI ↗</a>
+<a class="text-link" href="citations/p13.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="chapters">
+<div class="pub-year">2024</div>
+<div>
+<h3>Reutilization of Waste Polymeric Materials for 3D Printing Applications</h3>
+<p class="authors">Ramesh Kumar, S.; Ramesh, G.; Sreearravind, M.; Senthil, T.</p>
+<p class="venue">In R. K. Arya, G. D. Verros, O. P. Verma and C. M. Hussain (eds.), From Waste to Wealth. Springer, Singapore.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.1007/978-981-99-7552-5_54">DOI ↗</a>
+<a class="text-link" href="citations/p14.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="chapters">
+<div class="pub-year">2022</div>
+<div>
+<h3>Fatigue Characterization and Fractographic Analysis of Aluminium 6063 Alloy</h3>
+<p class="authors">Sreearravind, M.; Kumar S, R.; Ahilan, C.</p>
+<p class="venue">In Handbook of Research on Advancements in the Processing, Characterization, and Application of Lightweight Materials, pp. 176–194. IGI Global.</p>
+<div class="actions">
+<a class="text-link" href="citations/p15.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="chapters">
+<div class="pub-year">2020</div>
+<div>
+<h3>Severely Plastic Deformed Magnesium Based Alloys</h3>
+<p class="authors">Kumar Subramanian, R.; Kumar Srirangan, A.; Sreearravind, M.</p>
+<p class="venue">In Magnesium - The Wonder Element for Engineering/Biomedical Applications. IntechOpen.</p>
+<div class="actions">
+<a class="text-link" href="https://doi.org/10.5772/intechopen.88778">DOI ↗</a>
+<a class="text-link" href="citations/p16.bib" download>BibTeX ↓</a>
+</div>
+</div>
+</article>
+<article class="publication" data-category="review">
+<div class="pub-year">In review</div>
+<div>
+<span class="status">Manuscript · not yet accepted</span>
+<h3>Porosity-Controlled Fatigue Life Prediction in LPBF Aluminium Alloys: A Review and Physics-Informed Data-Driven Framework</h3>
+<p>Sreearravind Mani</p>
+<p class="venue">Journal of Materials Engineering and Performance · JMEP-26-07-50577</p>
+</div>
+</article>
+<article class="publication" data-category="review">
+<div class="pub-year">In review</div>
+<div>
+<span class="status">Manuscript · not yet accepted</span>
+<h3>Al–GNP powder metallurgy composites</h3>
+<p>Microstructural and mechanical characterisation of graphene nanoplatelet reinforced aluminium matrix composites.</p>
+<p class="fine">Research topic shown; final submitted title pending confirmation.</p>
+</div>
+</article>
+</div>
+<p class="fine">Publication and manuscript statuses updated 26 October 2026. Bibliographic years follow the career record; online and volume years may differ.</p>
+</section>
+<section id="computational" class="section">
+<div class="section-heading">
+<p class="eyebrow">05 / COMPUTATIONAL PLATFORMS</p>
+<h2>From scattered records<br>to connected knowledge.</h2>
+</div>
+<div class="grid two">
+<article class="card project">
+<div class="project-top">
+<span class="project-number">01</span>
+<span class="status">Research platform</span>
+</div>
+<h3>FDIP</h3>
+<p class="project-sub">Fatigue Data Intelligence Platform</p>
+<p>Relational schema, Python ETL and PostgreSQL infrastructure for traceable fatigue knowledge. Weibull reliability analytics and PSPP mapping connect processing routes to fatigue behaviour.</p>
+<div class="tags">
+<span>Python</span>
+<span>PostgreSQL</span>
+<span>Streamlit</span>
+<span>Weibull</span>
+</div>
+<p class="fine">Experimentally anchored, expanded data; the dataset does not represent 85 independent experimental tests.</p>
+<div class="actions">
+<a class="button secondary" href="https://github.com/sreearravind/Fatigue-Data-Infrastructure-for-Reliability-Analytics">GitHub ↗</a>
+<a class="button secondary" href="https://fatiguedbms-feo394nhh75ex5cfn6ua4t.streamlit.app/">Streamlit demo ↗</a>
+</div>
+</article>
+<article class="card project">
+<div class="project-top">
+<span class="project-number">02</span>
+<span class="status">Early research prototype</span>
+</div>
+<h3>MDIP & MDIP-SR</h3>
+<p class="project-sub">Manufacturing Data Intelligence Platform</p>
+<p>REST API architecture for material-to-inspection traceability: validated imports, role-based access, audit logging, workflow control and report generation. MDIP-SR explores scrap-risk intelligence.</p>
+<div class="tags">
+<span>FastAPI</span>
+<span>PostgreSQL</span>
+<span>Pydantic</span>
+<span>RBAC</span>
+</div>
+<p class="fine">Synthetic-data testing; industrial predictive performance and measurable scrap reduction remain unvalidated.</p>
+<div class="actions">
+<a class="button secondary" href="https://github.com/sreearravind/MDIP-Research-Showcase">Public showcase ↗</a>
+<a class="button secondary" href="https://mdipv10-fhp7vphy3y29eoypp8papppp.streamlit.app/">Streamlit demo ↗</a>
+</div>
+</article>
+<article class="card project">
+<div class="project-top">
+<span class="project-number">03</span>
+<span class="status">Classroom use · 2026</span>
+</div>
+<h3>ME25C08 Course Hub</h3>
+<p class="project-sub">Digital academic portal</p>
+<p>Student dashboard, authenticated result and rubric-feedback access, interactive MCQs, revision support and AI-assisted materials-selection activities with verification and reflection.</p>
+<div class="tags">
+<span>HTML / CSS / JS</span>
+<span>Apps Script</span>
+<span>GitHub Pages</span>
+</div>
+<p class="fine">Built for Metallurgy & Materials Science; student records remain within authenticated course channels.</p>
+<div class="actions">
+<a class="button secondary" href="https://sreearravind.github.io/ME25C08-Materials-Selection-Submission/">Open course hub ↗</a>
+<a class="button secondary" href="https://github.com/sreearravind/ME25C08-Materials-Selection-Submission">GitHub ↗</a>
+</div>
+</article>
+<article class="card initiative">
+<p class="eyebrow">RESEARCH TO VENTURE</p>
+<h3>IndusDatum</h3>
+<p class="project-sub">Founder &amp; Technology Lead</p>
+<p>An early-stage, founder-led research initiative developing MDIP and MDIP-SR for manufacturing-data traceability and future engineering-validated scrap-risk analysis.</p>
+<p>Unincorporated, unfunded and pre-revenue. No paid industrial deployment or commercial performance claim.</p>
+<p class="fine">Engagement includes SASTRA-TIC, iDEX, NASSCOM Applied Research Bridge and a WSAI / IIT Madras venture application. Participation and applications do not imply funding, acceptance or institutional endorsement.</p>
+</article>
+</div>
+<p class="fine">Hosted demos may need time to wake up. The public MDIP showcase documents the architecture; the full backend is available by controlled technical review.</p>
+</section>
+<section id="teaching" class="section">
+<div class="section-heading">
+<p class="eyebrow">06 / TEACHING &amp; ACADEMIC LEADERSHIP</p>
+<h2>Engineering judgement,<br>supported by digital learning.</h2>
+<p>90 scheduled theory periods across two courses in 2026.</p>
+</div>
+<div class="grid two">
+<article class="card">
+<span class="status">Completed · January–April 2026</span>
+<h3>OCE351 · Environmental &amp; Social Impact Assessment</h3>
+<p>BTech Artificial Intelligence &amp; Data Science · Semester VI</p>
+<div class="course-numbers">
+<span>
+<strong>62</strong> students</span>
+<span>
+<strong>45</strong> theory periods</span>
+</div>
+<p>EIA methods, baseline monitoring, impact prediction, socio-economic assessment and environmental management, supported by digital question banks and application-based assessment.</p>
+</article>
+<article class="card">
+<span class="status">Lecture block completed · July–October 2026</span>
+<h3>ME25C08 · Metallurgy &amp; Materials Science</h3>
+<p>BE Mechanical Engineering · Semester III</p>
+<div class="course-numbers">
+<span>
+<strong>33</strong> students</span>
+<span>
+<strong>45</strong> theory periods</span>
+</div>
+<p>Phase diagrams, heat treatment, engineering materials, deformation and failure. Guided 11 teams in technical presentations. Overall course assessment remains ongoing as of 26 October.</p>
+</article>
+</div>
+<div class="teaching-strip">
+<div>
+<h3>AI-assisted projects</h3>
+<p>Materials selection with engineering justification, verification and reflection.</p>
+</div>
+<div>
+<h3>Private student feedback</h3>
+<p>Authenticated result portals, rubric feedback and individual learning support.</p>
+</div>
+<div>
+<h3>Weekly open hours</h3>
+<p>Tuesday · 12:40–13:30<br>Question banks, revision guidance and project mentoring.</p>
+</div>
+</div>
+<p class="fine">Earlier teaching: laboratory instruction and teaching assistance at SASTRA (2018–2024) in basic mechanical engineering, CAD/CAM, metallurgy, dynamics and manufacturing practices.</p>
+</section>
+<section id="writings" class="section">
+<div class="section-heading">
+<p class="eyebrow">07 / BEYOND THE LAB</p>
+<h2>Science, shared.</h2>
+</div>
+<div class="grid two">
+<a class="card writing-link" href="science-communicators.html">
+<span class="eyebrow">ENGLISH · SCIENCE COMMUNICATION</span>
+<h3>Science communicators ↗</h3>
+<p>Perspectives on communicating science beyond specialist audiences.</p>
+</a>
+<a class="card writing-link" href="origami-jwst-tamil.html">
+<span class="eyebrow">தமிழ் · அறிவியல்</span>
+<h3 lang="ta">காகித ஓடங்களும் ஜேம்ஸ் வெப் விண்வெளித் தொலைநோக்கியும் ↗</h3>
+<p>Origami and the James Webb Space Telescope.</p>
+</a>
+</div>
+</section>
+</div>
+<section id="contact" class="contact">
+<div class="wrap">
+<p class="eyebrow">LET’S CONNECT</p>
+<h2>Materials research.<br>Data systems. Shared questions.</h2>
+<p>Academic, research and engineering collaborations welcome.</p>
+<div class="actions">
+<a class="button light" href="mailto:sreearravindm@jjcet.ac.in">sreearravindm@jjcet.ac.in ↗</a>
+<a class="button ghost" href="mailto:arravindmani.505@gmail.com">arravindmani.505@gmail.com ↗</a>
+</div>
+<p>Tiruchirappalli, Tamil Nadu, India</p>
+</div>
+</section>
 </main>
-
-<footer>
-  <div class="wrap" style="display:flex; justify-content:space-between; width:100%">
-    <span class="muted">© <span id="y"></span> Dr. Sreearravind M · lightweight static site</span>
-    <span class="muted"><a href="#top">Back to top ↑</a></span>
-  </div>
+<footer class="wrap">
+<span>© 2026 Dr. Sreearravind Mani</span>
+<span>Research record updated · 26 October 2026</span>
+<a href="#home">Back to top ↑</a>
 </footer>
-
-<!-- JS: accordion, tabs, year, email (preserved & improved) -->
-<script>
-  function toggleAccordion(id, btnId) {
-    const panel = document.getElementById(id);
-    const btn = document.getElementById(btnId);
-    const isVisible = panel.style.display === "block";
-    panel.style.display = isVisible ? "none" : "block";
-    btn.innerHTML = (isVisible ? "▼ " : "▲ ") + btn.dataset.title;
-  }
-
-  // science articles (kept from original, could be expanded)
-  const scienceArticles = {
-    en: [
-      { title: "The AI takeoff: India’s narrow path for upskilling", author: "Sree Arravind", date: "Feb 2026", category: "Education/Tech", publication: "Youth Ki Awaaz", summary: "Agentic AI, upskilling, and supervision intelligence.", url: "https://www.youthkiawaaz.com/2026/02/the-ai-takeoff-indias-narrow-path-for-upskilling" },
-      { title: "Science Communicators in STEM: Shaping Perceptions", author: "Sreearravind M", date: "2025", category: "Science Communication", publication: "Personal site", summary: "How communication builds trust in engineering.", url: "science-communicators.html" }
-    ],
-    ta: [
-      { title: "காகித ஓடங்களும் ஜேம்ஸ் வெப் விண்வெளித் தொலைநோக்கியும்", author: "ஸ்ரீ அரவிந்த்", date: "2025", category: "அறிவியல் தொடர்பியல்", publication: "தனிப்பட்ட வலைத்தளம்", summary: "ஓரிகாமி மற்றும் விண்வெளித் தொலைநோக்கி.", url: "origami-jwst-tamil.html" }
-    ]
-  };
-
-  function renderScienceCards(language, containerId){
-    const container = document.getElementById(containerId);
-    if(!container) return;
-    container.innerHTML = "";
-    scienceArticles[language].forEach(a => {
-      const card = document.createElement('article'); card.className='card';
-      card.innerHTML = `<h3 style="margin:0 0 0.3rem">${a.title}</h3>
-        <p class="science-source">${a.author} · ${a.publication}</p>
-        <div class="science-meta"><span>${a.date}</span><span>${a.category}</span></div>
-        <p class="science-summary">${a.summary}</p>
-        <a class="btn-outline" style="padding:0.3rem 1rem" href="${a.url}" target="_blank">Read</a>`;
-      container.appendChild(card);
-    });
-  }
-  renderScienceCards('en', 'science-writing-en');
-  renderScienceCards('ta', 'science-writing-ta');
-
-  // language tabs
-  const enBtn=document.getElementById('tab-en'), taBtn=document.getElementById('tab-ta');
-  const enPanel=document.getElementById('panel-en'), taPanel=document.getElementById('panel-ta');
-  function toggleLang(showEn){
-    enBtn.classList.toggle('active', showEn); taBtn.classList.toggle('active', !showEn);
-    enBtn.setAttribute('aria-selected', showEn); taBtn.setAttribute('aria-selected', !showEn);
-    enPanel.hidden = !showEn; taPanel.hidden = showEn;
-  }
-  enBtn.addEventListener('click', ()=>toggleLang(true));
-  taBtn.addEventListener('click', ()=>toggleLang(false));
-
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  const emailLink = document.getElementById('email-link');
-  emailLink.addEventListener('click', function(e){
-    this.href = 'mailto:' + 'arravindmani.505' + '@' + 'gmail.com';
-  });
-</script>
-
-<!-- schema.org Person (updated) -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Person",
-  "name":"Dr. Sreearravind M",
-  "jobTitle":"Assistant Professor | Materials & Fatigue Researcher",
-  "worksFor":[{"@type":"Organization","name":"JJ College of Engineering and Technology"},{"@type":"Organization","name":"SASTRA Deemed University"}],
-  "sameAs":["https://www.linkedin.com/in/sreearravind-m-ph-d-7079b472/","https://x.com/sreearravind","https://scholar.google.com/citations?user=bBqX3swAAAAJ&hl=en","https://orcid.org/0000-0002-5981-4821","https://github.com/sreearravind"],
-  "knowsAbout":["Fatigue of aluminium alloys","ECAP","Deep cryogenic treatment","Heat treatment","Materials data platform","Python","Streamlit","EBSD","Fractography"]
-}
-</script>
 </body>
 </html>
